@@ -1,0 +1,4 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import MovieList from '../src/Components/MovieList.jsx';
+test('searches and filters movies by genre', () => { render(<MemoryRouter><MovieList /></MemoryRouter>); expect(screen.getByText('Master')).toBeInTheDocument(); fireEvent.change(screen.getByRole('searchbox', { name: 'Search movies' }), { target: { value: 'paiyaa' } }); expect(screen.getByText('Paiyaa')).toBeInTheDocument(); expect(screen.queryByText('Master')).not.toBeInTheDocument(); fireEvent.change(screen.getByRole('searchbox', { name: 'Search movies' }), { target: { value: '' } }); fireEvent.change(screen.getByRole('combobox', { name: 'Filter by genre' }), { target: { value: 'Action' } }); expect(screen.getByText('Master')).toBeInTheDocument(); expect(screen.queryByText('Paiyaa')).not.toBeInTheDocument(); });

@@ -1,0 +1,17 @@
+{
+  "name": "CineBook Movie Booking",
+  "short_name": "CineBook",
+  "description": "Browse movies and book cinema seats.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101116",
+  "theme_color": "#101116",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

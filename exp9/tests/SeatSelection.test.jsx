@@ -1,0 +1,3 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import SeatSelection from '../src/Components/SeatSelection.jsx';
+test('selects and removes a seat accessibly', () => { const toggleSeat = jest.fn(); const { rerender } = render(<SeatSelection selectedSeats={[]} toggleSeat={toggleSeat} />); const seat = screen.getByRole('button', { name: 'Seat S1, available' }); expect(seat).toHaveAttribute('aria-pressed', 'false'); fireEvent.click(seat); expect(toggleSeat).toHaveBeenCalledWith('S1'); rerender(<SeatSelection selectedSeats={['S1']} toggleSeat={toggleSeat} />); expect(screen.getByRole('button', { name: 'Seat S1, selected' })).toHaveAttribute('aria-pressed', 'true'); expect(screen.getByText('Selected seats: S1')).toBeInTheDocument(); });
